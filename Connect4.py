@@ -117,6 +117,7 @@ while True:
             printBoard(GameBoard)
             break
         
+        
         HScore=CheckHor(GameBoard,Row,Choice-1)
         print("Hscore"+ str(HScore) )
         if(HScore==4):
