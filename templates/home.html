@@ -2,7 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    {% if title %}
+      <title>Flask Blog {{title}}</title>
+    {% else %}
+      <title>Flask Blog</title>
+    {% endif %}
   </head>
   <body>
 
@@ -11,5 +15,7 @@
     <p> By {{post.author}} on {{post.date_poste}}  </p>
     <p> {{post.content}}</p>
     {% endfor %}
+
+
   </body>
 </html>
