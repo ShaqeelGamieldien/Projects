@@ -6,7 +6,6 @@
       <title>Bootstrap demo</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-
       {% if title %}
       <title>Flask Blog {{title}}</title>
       {% else %}
@@ -38,16 +37,16 @@
       <main role="main" class="container">
          <div class="row">
             <div class="col-md-8">
-              {% with messages = get flashed_messages(with_categories=true) %}
-              {% endwith %}
-              {% if messages %}
-                {% for category, message in messages%}
-                <div class="alert alert-{{category}}">
+               {% with messages = get flashed_messages(with_categories=true) %}
+               {% endwith %}
+               {% if messages %}
+               {% for category, message in messages%}
+               <div class="alert alert-{{category}}">
                   {{ message }}
-                </div>
-                {% end for %}
-              {% endif% }
-              {% block content %}{% endblock %}
+               </div>
+               {% end for %}
+               {% endif% }
+               {% block content %}{% endblock %}
             </div>
             <div class="col-md-4">
                <div class="content-section">
