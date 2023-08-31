@@ -1,9 +1,11 @@
 from flask import *
+from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '40bfaaf7cf15c237128ef5ae12c62e85'
+app.config['SQLAlCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 posts = [
  {
   'author' : 'Asura Samsara',
