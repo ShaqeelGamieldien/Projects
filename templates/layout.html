@@ -37,15 +37,15 @@
       <main role="main" class="container">
          <div class="row">
             <div class="col-md-8">
-               {% with messages = get flashed_messages(with_categories=true) %}
+               {% with messages = get_flashed_messages(with_categories=true) %}
                {% endwith %}
                {% if messages %}
                {% for category, message in messages%}
                <div class="alert alert-{{category}}">
                   {{ message }}
                </div>
-               {% end for %}
-               {% endif% }
+               {% endfor %}
+               {% endif %}
                {% block content %}{% endblock %}
             </div>
             <div class="col-md-4">
