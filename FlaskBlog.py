@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for
 
+app.config['SECRET_KEY'] = ' '
 
 app = Flask(__name__)
 
