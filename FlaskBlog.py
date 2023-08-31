@@ -1,20 +1,15 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm, LoginForm
-from datetime import datetime
+from forms import RegistrationForm, LoginForm  # Make sure the import paths are correct
+from datetime import datetime  # Correct the import of datetime
 
 app = Flask(__name__)
-
-# Secret key for protecting forms against CSRF attacks
 app.config['SECRET_KEY'] = '40bfaaf7cf15c237128ef5ae12c62e85'
-
-# Configuration for connecting to the SQLite database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Correct the config key name
 db = SQLAlchemy(app)
 
-# User class representing the 'User' table in the database
 class User(db.Model):
-    id = db.Column(db.String, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)  # Change db.String to db.Integer
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
@@ -23,41 +18,36 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
-# Post class representing the 'Post' table in the database
 class Post(db.Model):
-    id = db.Column(db.String, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)  # Change db.String to db.Integer
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
 
-# Sample post data
 posts = [
     {
         'author': 'Asura Samsara',
         'title': 'Blog post 1',
         'content': 'Oonga Boonga',
-        'date_posted': 'April 25, 2018'
+        'date_posted': 'April 25, 2018'  # Fix the key name to 'date_posted'
     },
     {
         'author': 'Rogal Dorne',
         'title': 'Praetorian of Man',
         'content': 'Build walls',
-        'date_posted': 'May 20, 2018'
+        'date_posted': 'May 20, 2018'  # Fix the key name to 'date_posted'
     }
 ]
 
-# Route for the home page
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template('home.html', posts=posts)
 
-# Route for the about page
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
 
-# Route for user registration
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -67,7 +57,6 @@ def register():
 
     return render_template('register.html', title='Register', form=form)
 
-# Route for user login
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -80,4 +69,4 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Start the Flask application
+    app.run(debug=True)
