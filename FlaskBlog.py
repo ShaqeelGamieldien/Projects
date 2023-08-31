@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '40bfaaf7cf15c237128ef5ae12c62e85'
 
 # Configuration for connecting to the SQLite database
-app.config['SQLAlCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
 # User class representing the 'User' table in the database
