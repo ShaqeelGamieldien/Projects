@@ -39,13 +39,13 @@
          <div class="row">
             <div class="col-md-8">
               {% with messages = get flashed_messages(with_categories=true) %}
-              {% endwith%}
+              {% endwith %}
               {% if messages %}
                 {% for category, message in messages%}
                 <div class="alert alert-{{category}}">
                   {{ message }}
                 </div>
-                {% end for% }
+                {% end for %}
               {% endif% }
               {% block content %}{% endblock %}
             </div>
