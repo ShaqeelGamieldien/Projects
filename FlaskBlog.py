@@ -1,7 +1,7 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
-
+from datetime import DateTime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '40bfaaf7cf15c237128ef5ae12c62e85'
@@ -19,6 +19,11 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.username}' , '{self.email}', '{self.image_file}')"
 
+
+class Post(db.Model):
+    id = db.Column(db.String, primary_key = True)
+    title = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime , nullable=False, default = datetime.utcnow)
 
 
 posts = [
