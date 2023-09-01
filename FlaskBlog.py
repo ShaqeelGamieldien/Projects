@@ -6,7 +6,10 @@ from datetime import datetime  # Correct the import of datetime
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '40bfaaf7cf15c237128ef5ae12c62e85'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Correct the config key name
+
 db = SQLAlchemy(app)
+app.app_context().push()
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # Change db.String to db.Integer
@@ -24,7 +27,7 @@ class Post(db.Model):
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
-    user_id= db.Column(db.Integer, db.foreign_key('user.id') , nullable =False)
+    user_id= db.Column(db.Integer, db.ForeignKey('user.id') , nullable =False)
 
     def __repr__(self):
         return f"User('{self.title}', '{self.date_posted}')"
