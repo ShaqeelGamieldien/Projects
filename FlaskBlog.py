@@ -1,6 +1,6 @@
 
 
-app.app_context().push()
+
 from models import User,Post
 
 
