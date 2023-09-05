@@ -1,6 +1,6 @@
 from flask_wtf import *
 from wtforms import *
-from wtforms.validators import *
+from wtforms.validators import *, ValidationError
 import email_validator
 from FlaskBlog.models import User
 class RegistrationForm(FlaskForm):
@@ -15,9 +15,9 @@ class RegistrationForm(FlaskForm):
 
         submit=SubmitField('Sign Up')
 
-        def validate_field(self,field):
-            if True:
-                raise ValidationError('Validation Message')
+    #def validate_field(self,field):
+    #        if True:
+    #            raise ValidationError('Validation Message')
 
 
         def validate_username(self,username):
@@ -26,9 +26,9 @@ class RegistrationForm(FlaskForm):
                 raise ValidationError('That username is taken. Please choose a different one')
 
         def validate_email(self,email):
-            email=User.query.filter_by(email=email.data).first()
+            user=User.query.filter_by(email=email.data).first()
             if user:
-                raise ValidationError('That username is taken. Please choose a different one')
+                raise ValidationError('That email is taken. Please choose a different one')
 
 
 class LoginForm(FlaskForm):
