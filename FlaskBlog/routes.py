@@ -1,5 +1,5 @@
 from models import User,Post
-
+from flask import *
 
 
 posts = [
