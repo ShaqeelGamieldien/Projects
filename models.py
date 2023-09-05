@@ -1,3 +1,7 @@
+
+from datetime import datetime
+from FlaskBlog import db
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # Change db.String to db.Integer
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -18,3 +22,6 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"User('{self.title}', '{self.date_posted}')"
+
+from FlaskBlog import db
+from datetime import datetime

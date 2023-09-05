@@ -2,6 +2,8 @@ from flask import *
 from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm  # Make sure the import paths are correct
 from datetime import datetime  # Correct the import of datetime
+from models import User,Post
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '40bfaaf7cf15c237128ef5ae12c62e85'
@@ -9,28 +11,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Correct the confi
 
 db = SQLAlchemy(app)
 app.app_context().push()
-
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)  # Change db.String to db.Integer
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
-    password = db.Column(db.String(60), nullable=False)
-    posts = db.relationship('Post', backref = 'author', lazy =True)
-
-    def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
-
-class Post(db.Model):
-    id = db.Column(db.Integer, primary_key=True)  # Change db.String to db.Integer
-    title = db.Column(db.String(100), nullable=False)
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    content = db.Column(db.Text, nullable=False)
-    user_id= db.Column(db.Integer, db.ForeignKey('user.id') , nullable =False)
-
-    def __repr__(self):
-        return f"User('{self.title}', '{self.date_posted}')"
 
 
 
