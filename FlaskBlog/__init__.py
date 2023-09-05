@@ -1,6 +1,6 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_bcrypt import Bcrypt
 from datetime import datetime  # Correct the import of datetime
 
 
@@ -11,6 +11,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Correct the confi
 
 db = SQLAlchemy(app)
 app.app_context().push()
-
+bcrypt = Bcrypt(app)
 
 from FlaskBlog import routes
