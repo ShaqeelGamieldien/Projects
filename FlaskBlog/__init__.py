@@ -1,6 +1,6 @@
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm, LoginForm  # Make sure the import paths are correct
+
 from datetime import datetime  # Correct the import of datetime
 
 
@@ -11,3 +11,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Correct the confi
 
 db = SQLAlchemy(app)
 app.app_context().push()
+
+
+from FlaskBlog import routes
