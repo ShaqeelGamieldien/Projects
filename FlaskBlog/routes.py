@@ -1,6 +1,6 @@
-from models import User,Post
+from FlaskBlog.models import User,Post
 from flask import *
-
+from FlaskBlog.forms import RegistrationForm, LoginForm
 
 posts = [
     {
