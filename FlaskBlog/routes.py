@@ -73,4 +73,4 @@ def logout():
 
 @app.route('/account')
 def account():
-        return render_template('account.html', title='Account', form=form)
+        return render_template('account.html', title='Account')
