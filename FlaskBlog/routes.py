@@ -5,6 +5,7 @@ from FlaskBlog.forms import *
 from FlaskBlog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 import os
+from PIL import Image
 
 posts = [
     {
@@ -76,6 +77,10 @@ def save_picture(form_picture):
     _ , f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex+f_ext
     picture_path =os.path.join(app.root_path,'static/profile_pics', picture_fn)
+    output_size = (125,125)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+
     form_picture.save(picture_path)
     return picture_fn
 
