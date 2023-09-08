@@ -116,4 +116,4 @@ def new_post():
         flash('Your post has been created', 'success')
         return redirect(url_for('home'))
 
-    return render_template('create_post.html', title='New Post', image_file = image_file, form= form)
+    return render_template('create_post.html', title='New Post',  form= form)
