@@ -54,7 +54,7 @@ class UpdateForm(FlaskForm):
         if email.data != current_user.email:
             user = User.query.filter_by(email=email.data).first()
             if user:
-                raise ValidationError('That email is taken. Please choose a different one
+                raise ValidationError('That email is taken. Please choose a different one')
 
 class PostForm(FlaskForm):
     title= StringField('Title', validators=[DataRequired()])
