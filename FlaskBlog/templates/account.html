@@ -1,56 +1,79 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "layout.html" %}  <!-- Extends a base template called "layout.html" -->
+
+{% block content %}  <!-- Defines a content block -->
 <div class="content-section">
    <div class="media">
+      <!-- Display user's profile picture, username, and email -->
       <img class="rounded-circle account-img" src="{{image_file}}">
+      <!-- Display user's profile picture as a rounded image -->
       <div class="media-body">
          <h2 class="account-heading">{{ current_user.username }}</h2>
+         <!-- Display user's username -->
          <p class="text-secondary">{{ current_user.email }}</p>
+         <!-- Display user's email address -->
       </div>
    </div>
 
-   	<form class="" action="" method="post" enctype="multipart/form-data">
-   		{{ form.hidden_tag() }}
-   		<fieldset class="form-group">
-   			<legend class="border-bottom mb-4">Update Now</legend>
-   			<div class="form-group">
-   				{{ form.username.label(class="form-control-label")}}
-   				{% if form.username.errors %}
-   				{{ form.username(class="form-control form-control-lg is-invalid")}}
-   				<div class="invalid-feedback">
-   					{% for error in form.username.errors %}
-   					<span>{{ error }}</span>
-   				</div>
-   				{% endfor %}
-   				{% else %}
-   				{{ form.username(class="form-control form-control-lg")}}
-   				{% endif %}
-   			</div>
-   			<div class="form-group">
-   				{{ form.email.label(class="form-control-label")}}
-   				{% if form.email.errors %}
-   				{{ form.email(class="form-control form-control-lg is-invalid")}}
-   				<div class="invalid-feedback">
-   					{% for error in form.email.errors %}
-   					<span>{{ error }}</span>
-   				</div>
-   				{% endfor %}
-   				{% else %}
-   				{{ form.email(class="form-control form-control-lg")}}
-   				{% endif %}
-   			</div>
-        <div class="form-group">
-          {{ form.picture.label()}}
-          {{ form.picture(class="form-control-file") }}
-          {% if form.picture.errors %}
-          {% for error in form.picture.errors %}
-          <span class = "text-danger">{{ error }}</span></<br>
-
-          {% endfor %}
-          {% endif %}
-        </div>
-        <div class="form-group">
-     			{{ form.submit(class="btn btn-outline-info")}}
-     		</div>
-</div>
+   <form class="" action="" method="post" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <!-- Generates a hidden field for security purposes -->
+      <fieldset class="form-group">
+         <legend class="border-bottom mb-4">Update Now</legend>
+         <!-- Display a legend for the update form -->
+         <div class="form-group">
+            {{ form.username.label(class="form-control-label")}}
+            <!-- Renders a label for the 'username' form field with a specific CSS class -->
+            {% if form.username.errors %}
+            <!-- Checks if there are any errors for the 'username' field -->
+            {{ form.username(class="form-control form-control-lg is-invalid")}}
+            <!-- Renders the 'username' input field with error styling if errors exist -->
+            <div class="invalid-feedback">
+               {% for error in form.username.errors %}
+               <span>{{ error }}</span>
+               <!-- Displays individual error messages for the 'username' field -->
+               </div>
+               {% endfor %}
+               {% else %}
+               {{ form.username(class="form-control form-control-lg")}}
+               <!-- Renders the 'username' input field normally if no errors -->
+               {% endif %}
+            </div>
+            <div class="form-group">
+               {{ form.email.label(class="form-control-label")}}
+               <!-- Renders a label for the 'email' form field with a specific CSS class -->
+               {% if form.email.errors %}
+               <!-- Checks if there are any errors for the 'email' field -->
+               {{ form.email(class="form-control form-control-lg is-invalid")}}
+               <!-- Renders the 'email' input field with error styling if errors exist -->
+               <div class="invalid-feedback">
+                  {% for error in form.email.errors %}
+                  <span>{{ error }}</span>
+                  <!-- Displays individual error messages for the 'email' field -->
+               </div>
+               {% endfor %}
+               {% else %}
+               {{ form.email(class="form-control form-control-lg")}}
+               <!-- Renders the 'email' input field normally if no errors -->
+               {% endif %}
+            </div>
+            <div class="form-group">
+               {{ form.picture.label()}}
+               <!-- Renders a label for the 'picture' form field -->
+               {{ form.picture(class="form-control-file") }}
+               <!-- Renders the 'picture' file input field -->
+               {% if form.picture.errors %}
+               <!-- Checks if there are any errors for the 'picture' field -->
+               {% for error in form.picture.errors %}
+               <span class = "text-danger">{{ error }}</span><br>
+               <!-- Displays individual error messages for the 'picture' field -->
+               {% endfor %}
+               {% endif %}
+            </div>
+            <div class="form-group">
+               {{ form.submit(class="btn btn-outline-info")}}
+               <!-- Renders a submit button with specific styling -->
+            </div>
+         </fieldset>
+      </form>
+   </div>
 {% endblock content %}

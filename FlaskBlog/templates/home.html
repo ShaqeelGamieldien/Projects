@@ -1,15 +1,22 @@
-{% extends "layout.html" %}
-{% block content %}
-{% for post in posts %}
+{% extends "layout.html" %}  <!-- Extends a base template called "layout.html" -->
+
+{% block content %}  <!-- Defines a content block -->
+{% for post in posts %}  <!-- Loop through a list of post objects -->
 <article class="media content-section">
-  <<img class = "rounded-circle article-img" src="{{ url_for('static' , filename='profile_pics/' + post.author.image_file) }}">
+  <!-- Display each post as a media article -->
+  <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+  <!-- Display the author's profile picture with a link to their profile image -->
    <div class="media-body">
       <div class="article-metadata">
          <a class="mr-2" href="#">{{ post.author.username }}</a>
+         <!-- Display the author's username as a link -->
          <small class="text-muted">{{ post.date_posted.strftime('%d-%m-%Y') }}</small>
+         <!-- Display the date the post was posted in a specific format -->
       </div>
       <h2><a class="article-title" href="{{ url_for('post', post_id=post.id)}}">{{ post.title }}</a></h2>
+      <!-- Display the title of the post with a link to view the full post -->
       <p class="article-content">{{ post.content }}</p>
+      <!-- Display the content of the post -->
    </div>
 </article>
 {% endfor %}

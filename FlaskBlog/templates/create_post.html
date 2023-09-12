@@ -1,47 +1,61 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "layout.html" %}  <!-- Extends a base template called "layout.html" -->
+
+{% block content %}  <!-- Defines a content block -->
 <div class="content-section">
 	<form class="" action="" method="post">
 		{{ form.hidden_tag() }}
+		<!-- Generates a hidden field for security purposes -->
 		<fieldset class="form-group">
 			<legend class="border-bottom mb-4">{{ legend }}</legend>
+			<!-- Displays a legend with a title provided in the 'legend' variable -->
 
 			<div class="form-group">
 				{{ form.title.label(class="form-control-label")}}
+				<!-- Renders a label for the 'title' form field with a specific CSS class -->
 				{% if form.title.errors %}
+				<!-- Checks if there are any errors for the 'title' field -->
 				{{ form.title(class="form-control form-control-lg is-invalid")}}
+				<!-- Renders the 'title' input field with error styling if errors exist -->
 				<div class="invalid-feedback">
 					{% for error in form.title.errors %}
 					<span>{{ error }}</span>
+					<!-- Displays individual error messages for the 'title' field -->
 				</div>
 				{% endfor %}
 				{% else %}
 				{{ form.title(class="form-control form-control-lg")}}
+				<!-- Renders the 'title' input field normally if no errors -->
 				{% endif %}
 			</div>
+
 			<div class="form-group">
 				{{ form.content.label(class="form-control-label")}}
+				<!-- Renders a label for the 'content' form field with a specific CSS class -->
 				{% if form.content.errors %}
+				<!-- Checks if there are any errors for the 'content' field -->
 				{{ form.content(class="form-control form-control-lg is-invalid")}}
-				<div class="invalcontentid-feedback">
+				<!-- Renders the 'content' input field with error styling if errors exist -->
+				<div class="invalid-feedback">
 					{% for error in form.content.errors %}
 					<span>{{ error }}</span>
+					<!-- Displays individual error messages for the 'content' field -->
 				</div>
 				{% endfor %}
 				{% else %}
 				{{ form.content(class="form-control form-control-lg")}}
+				<!-- Renders the 'content' input field normally if no errors -->
 				{% endif %}
 			</div>
-
 		</fieldset>
 
 		<div class="form-group">
 			{{ form.submit(class="btn btn-outline-info")}}
+			<!-- Renders a submit button with specific styling -->
 		</div>
 
-    <small clas="text-muted ml-2">
-    
-      </small>
+		<small class="text-muted ml-2">
+			<!-- Displays additional text content (if any) with muted text color -->
+		</small>
 	</form>
 </div>
 {% endblock content %}

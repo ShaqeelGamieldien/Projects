@@ -1,57 +1,58 @@
 {% extends "layout.html" %}
+
 {% block content %}
 <div class="content-section">
 	<form class="" action="" method="post">
-		{{ form.hidden_tag() }}
+		{{ form.hidden_tag() }} <!-- Hidden form tag for security purposes -->
 		<fieldset class="form-group">
-			<legend class="border-bottom mb-4">Log In</legend>
+			<legend class="border-bottom mb-4">Log In</legend> <!-- Form legend for context -->
 
 			<div class="form-group">
-				{{ form.email.label(class="form-control-label")}}
+				{{ form.email.label(class="form-control-label")}} <!-- Label for email field -->
 				{% if form.email.errors %}
-				{{ form.email(class="form-control form-control-lg is-invalid")}}
+				{{ form.email(class="form-control form-control-lg is-invalid")}} <!-- Email input with error styling if applicable -->
 				<div class="invalid-feedback">
 					{% for error in form.email.errors %}
-					<span>{{ error }}</span>
+					<span>{{ error }}</span> <!-- Display email validation errors -->
 				</div>
 				{% endfor %}
 				{% else %}
-				{{ form.email(class="form-control form-control-lg")}}
+				{{ form.email(class="form-control form-control-lg")}} <!-- Email input -->
 				{% endif %}
 			</div>
 			<div class="form-group">
-				{{ form.password.label(class="form-control-label")}}
+				{{ form.password.label(class="form-control-label")}} <!-- Label for password field -->
 				{% if form.password.errors %}
-				{{ form.password(class="form-control form-control-lg is-invalid")}}
+				{{ form.password(class="form-control form-control-lg is-invalid")}} <!-- Password input with error styling if applicable -->
 				<div class="invalid-feedback">
 					{% for error in form.password.errors %}
-					<span>{{ error }}</span>
+					<span>{{ error }}</span> <!-- Display password validation errors -->
 				</div>
 				{% endfor %}
 				{% else %}
-				{{ form.password(class="form-control form-control-lg")}}
+				{{ form.password(class="form-control form-control-lg")}} <!-- Password input -->
 				{% endif %}
 			</div>
       <div class="form-check">
-        {{ form.remember(class="form-check-input") }}
-        {{ form.remember.label(class="form-check-label") }}
+        {{ form.remember(class="form-check-input") }} <!-- Checkbox for "Remember Me" option -->
+        {{ form.remember.label(class="form-check-label") }} <!-- Label for "Remember Me" checkbox -->
       </div>
 		</fieldset>
 
 		<div class="form-group">
-			{{ form.submit(class="btn btn-outline-info")}}
+			{{ form.submit(class="btn btn-outline-info")}} <!-- Submit button for the login form -->
 		</div>
 
-    <small clas="text-muted ml-2">
+    <small class="text-muted ml-2">
       <a href="#">
-        Forgot Password?
+        Forgot Password? <!-- Link to reset password page (not implemented in this code) -->
       </a>
-      </small>
+    </small>
 	</form>
 </div>
 <div class="border-top pt-3">
 	<small class="text-muted">
-	Need have an account? <a class="ml-2" href="{{url_for('register')}}">Sign up now</a>
+	Need to have an account? <a class="ml-2" href="{{url_for('register')}}">Sign up now</a> <!-- Link to registration page -->
 	</small>
 </div>
 {% endblock content %}
