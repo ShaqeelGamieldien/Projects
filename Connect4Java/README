@@ -1,0 +1,3 @@
+An old Java version of connect 4 that has both a Terminal and GUI versions built
+
+It uses array manipulation to function and the Std Java Library to function as  inputs, drawing and audio
